@@ -12,12 +12,12 @@ public class LinkedPositionalList<E> implements PositionalList<E> {
 
 	private static class DNode<E> implements Position<E> { 
 		private E element; 
-		private LinkedPositionalList<E> list;
+		private PositionalList<E> list;
 		private DNode<E> prev, next;
 		public E getElement() {
 			return element;
 		}
-		public DNode(E element, DNode<E> prev, DNode<E> next, LinkedPositionalList<E> list) {
+		public DNode(E element, DNode<E> prev, DNode<E> next, PositionalList<E> list) {
 			this.element = element;
 			this.prev = prev;
 			this.next = next;
@@ -44,10 +44,10 @@ public class LinkedPositionalList<E> implements PositionalList<E> {
 		public void setNext(DNode<E> next) {
 			this.next = next;
 		} 
-		public LinkedPositionalList<E> getList() {
+		public PositionalList<E> getList() {
 			return list;
 		}
-		public void setList(LinkedPositionalList<E> list) {
+		public void setList(PositionalList<E> list) {
 			this.list = list;
 		}
 		

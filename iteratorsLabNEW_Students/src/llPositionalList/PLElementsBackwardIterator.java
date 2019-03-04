@@ -1,11 +1,12 @@
 package llPositionalList;
 
+import java.util.Iterator;
 import java.util.NoSuchElementException;
 
 import interfaces.Position;
 import interfaces.PositionalList;
 
-public class PLElementsBackwardIterator<E>  {
+public class PLElementsBackwardIterator<E> implements Iterator<E> {
 	
 	PLIteratorL2F<E> iter;
 	PositionalList<E> list; 
