@@ -10,7 +10,7 @@ public class L2FIteratorMaker<E> implements PLIteratorMaker<E> {
 
 	@Override
 	public Iterator<Position<E>> makeIterator(PositionalList<E> pl) {
-		return new PLIteratorL2F(pl);
+		return new PLIteratorL2F<E>(pl);
 	}
 
 }

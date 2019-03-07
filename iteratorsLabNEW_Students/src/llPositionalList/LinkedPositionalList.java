@@ -68,7 +68,16 @@ public class LinkedPositionalList<E> implements PositionalList<E> {
 		trailer = new DNode<>(); 
 		header.setNext(trailer);
 		trailer.setPrev(header); 
-		size = 0; 
+		size = 0;
+		iteratorMaker= new F2LIteratorMaker<E>();
+	}
+	public LinkedPositionalList(PLIteratorMaker<E> iter) {
+		header = new DNode<>(); 
+		trailer = new DNode<>(); 
+		header.setNext(trailer);
+		trailer.setPrev(header); 
+		size = 0;
+		iteratorMaker= iter;
 	}
 
 	private DNode<E> validate(Position<E> p) throws IllegalArgumentException { 
@@ -217,7 +226,7 @@ public class LinkedPositionalList<E> implements PositionalList<E> {
 	
 	private class ElementIterator implements Iterator<E> { 
 		Iterator<Position<E>> posIterator = 
-				new PositionIterator(); 
+				iteratorMaker.makeIterator(LinkedPositionalList.this) ;
 		@Override
 		public boolean hasNext() {
 			return posIterator.hasNext();
@@ -239,7 +248,7 @@ public class LinkedPositionalList<E> implements PositionalList<E> {
 
 		@Override
 		public Iterator<Position<E>> iterator() {
-			return new PositionIterator();
+			return iteratorMaker.makeIterator(LinkedPositionalList.this);
 		} 
 		
 	}
